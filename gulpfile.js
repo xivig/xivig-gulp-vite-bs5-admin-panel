@@ -93,9 +93,7 @@ export const build = gulp.series(
     viteBuild,
     optimizeImages,    
     copyVendorPackages,
-    exportAssets,
-    // serve root html changes
-    serve
+    exportAssets
 );
 
 // Production: Build everything then preview the final result

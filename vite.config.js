@@ -24,6 +24,7 @@ const getHtmlEntries = () => {
 };
 
 export default defineConfig({
+  base: './', // 👈 Ensures relative paths for assets
   plugins: [
     handlebars({
       partialDirectory: path.resolve(__dirname, 'src/partials'),
@@ -45,7 +46,6 @@ export default defineConfig({
     },
   },
   build: {
-    base: './', // 👈 Ensures relative paths for assets
     outDir: 'dist',
     assetsDir: 'assets',
     // Prevent Vite from clearing the folder if Gulp is also writing there

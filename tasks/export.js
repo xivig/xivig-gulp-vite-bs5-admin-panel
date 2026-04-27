@@ -9,7 +9,8 @@ export function exportAssets() {
       'dist/favicon.ico',
       'dist/plugins/**/*',
       'dist/vendors/**/*',
-      'dist/**/*.{png,jpg,jpeg,gif,svg,webp,ico}'
+      'dist/**/*.{png,jpg,jpeg,gif,svg,webp,ico}',
+      'dist/.nojekyll'
     ], {
       allowEmpty: true
     })
