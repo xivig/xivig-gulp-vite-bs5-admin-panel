@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Form Pickers</title>
+    <title>Account Onboarding</title>
     
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
@@ -44,16 +44,15 @@
     
     <!-- Vector Map (MapLibre) -->
     <link href="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.css" rel="stylesheet"/>
-  <script type="module" crossorigin src="/assets/form-pickers.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime.js">
-  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-core.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-fullcalendar.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-chartjs.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-apexcharts.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-echarts.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-highcharts.js">
-  <link rel="modulepreload" crossorigin href="/assets/custom_scripts.js">
+  <script type="module" crossorigin src="/assets/modulepreload-polyfill.js"></script>
+  <script type="module" crossorigin src="/assets/rolldown-runtime.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-core.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-fullcalendar.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-chartjs.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-apexcharts.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-echarts.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-highcharts.js"></script>
+  <script type="module" crossorigin src="/assets/custom_scripts.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/vendor-core.css">
   <link rel="stylesheet" crossorigin href="/assets/components.css">
   <link rel="stylesheet" crossorigin href="/assets/main.css">
@@ -568,211 +567,213 @@
             
             <!-- Standardized Page Header -->
             <div class="page-header p-4 my-4 bg-white rounded shadow-sm border-bottom border-primary border-5 text-center">
-                <h2 class="page-header__title h4 text-primary fw-bold mb-1">Form Pickers</h2>
+                <h2 class="page-header__title h4 text-primary fw-bold mb-1">Account Onboarding</h2>
                 <nav class="page-header__nav" aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 small justify-content-center">
                         <li class="breadcrumb__item">
                             <a href="index.html" class="breadcrumb__link">Home</a>
                         </li>
                         <li class="breadcrumb__item">
-                            <a href="#" class="breadcrumb__link">Forms</a>
+                            <a href="#" class="breadcrumb__link">Additional Pages</a>
                         </li>
-                        <li class="breadcrumb__item breadcrumb__item--active text-primary fw-semibold" aria-current="page">Form Pickers</li>
+                        <li class="breadcrumb__item breadcrumb__item--active text-primary fw-semibold" aria-current="page">Account Onboarding</li>
                     </ol>
                 </nav>
             </div>
 
             <!-- Main Content Area -->
             
-            <div class="row g-4">
-                <!-- Header Section -->
-                <div class="col-12">
-                    <div class="glass-card p-5 text-center shadow-sm border-0 position-relative overflow-hidden">
-                        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10"
-                             style="background: radial-gradient(circle at 20% 20%, var(--bs-primary) 0%, transparent 40%);"></div>
-                        <h2 class="display-5 fw-bold text-dark mb-2">Elite Form Pickers</h2>
-                        <p class="text-muted lead mb-0">Premium precision tools for modern application interfaces.</p>
-                    </div>
-                </div>
-            
-                <!-- Date Selection Group -->
-                <div class="col-lg-8">
-                    <div class="card-box h-100">
-                        <h4 class="section-title-modern">Date & Calendar</h4>
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <div class="mb-4">
-                                    <label class="apple-label">Standard Entry</label>
-                                    <input id="air-datepicker" class="form-control modern-input"
-                                           placeholder="Select Date" type="text"/>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="apple-label">Precision Timestamp</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-white border-end-0 rounded-start-3">
-                                            <i class="bi bi-clock-history text-primary"></i>
-                                        </span>
-                                        <input class="form-control modern-input border-start-0 rounded-end-3" id="clock-input"
-                                               placeholder="Choose Date and Time" type="text" readonly/>
-                                    </div>
-                                </div>
-                                <div class="mb-0">
-                                    <label class="apple-label">Range Selection</label>
-                                    <input type="text" id="range-picker" class="form-control modern-input"
-                                           placeholder="Start Date - End Date">
-                                </div>
+            <div class="onboarding-module">
+                <div class="card card-onboarding">
+                    <!-- Header -->
+                    <div class="px-4 py-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between border-bottom">
+                        <div class="mb-3 mb-md-0">
+                            <div class="h4 mb-0 brand-gradient">Xivig — Account Onboarding</div>
+                            <p class="text-muted small mb-0">Complete your profile to unlock full dashboard potential</p>
+                        </div>
+                        <div class="progress-container">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="small text-muted fw-bold">Setup Progress</span>
+                                <span class="small text-primary fw-bold" id="progressPercent">0%</span>
                             </div>
-                            <div class="col-md-6">
-                                <div class="bg-light p-4 rounded-4 text-center border h-100 d-flex flex-column justify-content-center">
-                                    <label class="apple-label mb-3">Live Interactive Calendar</label>
-                                    <div id="inline-datepicker" class="apple-style-inline mx-auto mb-3"></div>
-                                    <div class="p-3 bg-white rounded-3 border shadow-sm mt-auto">
-                                        <span class="text-muted small d-block mb-1">Focus Date</span>
-                                        <span id="output-date" class="fw-bold text-primary">Select a day</span>
-                                    </div>
-                                </div>
+                            <div class="progress-elite">
+                                <i class="progress-bar-elite"></i>
                             </div>
                         </div>
                     </div>
-                </div>
             
-                <!-- Right Column: Secondary Date Tools -->
-                <div class="col-lg-4">
-                    <div class="card-box mb-4 bg-primary text-white">
-                        <h4 class="fw-bold mb-1">Monthly Analytics</h4>
-                        <p class="small opacity-75 mb-4 text-white">Select period for report generation</p>
-                        <div class="mb-3">
-                            <input id="month-picker" class="form-control modern-input border-0 shadow-none bg-white bg-opacity-25 text-white placeholder-white"
-                                   placeholder="Select Month" type="text"/>
-                        </div>
-                        <div class="mt-4 pt-4 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
-                            <span class="small fw-medium">Active Target:</span>
-                            <span id="month-output" class="badge bg-white text-primary rounded-pill px-3 py-2">January 2026</span>
-                        </div>
-                    </div>
-            
-                    <div class="card-box glass-card border-primary border-opacity-10">
-                        <div class="d-flex align-items-center mb-4">
-                            <div class="icon-shape bg-primary-light text-primary rounded-3 p-3 me-3">
-                                <i class="bi bi-stopwatch fs-4"></i>
-                            </div>
+                    <!-- Tabs -->
+                    <div class="tabs-row">
+                        <div class="tab-item active" data-step="1">
+                            <div class="tab-badge">1</div>
                             <div>
-                                <h5 class="fw-bold mb-0">System Time</h5>
-                                <div id="live-clock1" class="text-muted small"></div>
+                                <div class="tab-title">Account</div>
+                                <div class="tab-meta">Identity basics</div>
                             </div>
                         </div>
-                        <div id="live-clock" class="display-6 fw-black text-dark text-center py-3 border rounded-4 bg-white shadow-sm mb-0"></div>
-                    </div>
-                </div>
             
-                <!-- Clock Pickers Section -->
-                <div class="col-12">
-                    <div class="card-box">
-                        <h4 class="section-title-modern">Precision Clock Pickers</h4>
-                        <div class="row g-4 text-center">
-                            <div class="col-md-3">
-                                <div class="p-4 rounded-4 bg-light hover-shadow transition-all">
-                                    <label class="apple-label">Delivery</label>
-                                    <input id="time-delivery" class="form-control modern-input text-center td-input"
-                                           value="09:00 AM" type="text" readonly/>
-                                </div>
+                        <div class="tab-item" data-step="2">
+                            <div class="tab-badge">2</div>
+                            <div>
+                                <div class="tab-title">Billing</div>
+                                <div class="tab-meta">Payment info</div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="p-4 rounded-4 bg-light hover-shadow transition-all">
-                                    <label class="apple-label">Departure</label>
-                                    <input id="train-departure" class="form-control modern-input text-center td-input"
-                                           value="12:00 PM" type="text" readonly/>
-                                </div>
+                        </div>
+            
+                        <div class="tab-item" data-step="3">
+                            <div class="tab-badge">3</div>
+                            <div>
+                                <div class="tab-title">Preferences</div>
+                                <div class="tab-meta">System behavior</div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="p-4 rounded-4 bg-light hover-shadow transition-all border border-primary border-opacity-25 shadow-sm">
-                                    <label class="apple-label text-primary">Wake Up</label>
-                                    <input id="alarm-clock" class="form-control modern-input text-center border-primary border-opacity-50 td-input"
-                                           value="07:30 AM" type="text" readonly/>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="p-4 rounded-4 bg-light hover-shadow transition-all">
-                                    <label class="apple-label">Reminder</label>
-                                    <input id="quick-entry" class="form-control modern-input text-center td-input"
-                                           value="06:00 PM" type="text" readonly/>
-                                </div>
+                        </div>
+            
+                        <div class="tab-item" data-step="4">
+                            <div class="tab-badge">4</div>
+                            <div>
+                                <div class="tab-title">Review</div>
+                                <div class="tab-meta">Final check</div>
                             </div>
                         </div>
                     </div>
-                </div>
             
-                <!-- Color Palette Section -->
-                <div class="col-12">
-                    <div class="card-box">
-                        <h4 class="section-title-modern">Elite Color Designers</h4>
-                        <div class="row g-4">
-                            <div class="col-lg-4">
-                                <div class="p-4 rounded-4 border h-100">
-                                    <label class="apple-label">Simple & UI Accent</label>
-                                    <div class="d-flex flex-column gap-3">
-                                        <div class="color-preview-wrapper d-flex align-items-center p-2">
-                                            <input type="color" class="apple-color-trigger" id="simple-picker" value="#0071e3">
-                                            <input type="text" id="simple-input" class="form-control border-0 bg-transparent fw-bold" value="#0071E3">
+                    <!-- Content -->
+                    <div class="tab-content-area">
+                        <!-- Step 1 -->
+                        <div class="tab-pane-step active" data-step="1">
+                            <h5 class="fw-bold mb-4">Step 1: Account Information</h5>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Username</label>
+                                    <input id="username" type="text" class="form-control" placeholder="Unique ID" value="Valerie_Architect">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email Address</label>
+                                    <input id="email" type="email" class="form-control" value="valerie@xivig.com">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">First Name</label>
+                                    <input id="firstName" class="form-control" value="Valerie">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Last Name</label>
+                                    <input id="lastName" class="form-control" value="Luna">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Organization</label>
+                                    <input id="org" class="form-control" value="Elite Dev Core">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Primary Location</label>
+                                    <input id="location" class="form-control" value="San Francisco, CA">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone Number</label>
+                                    <input id="phone" class="form-control" value="+1 (555) 123-4567">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Date of Birth</label>
+                                    <input id="birthday" type="date" class="form-control" value="1988-06-10">
+                                </div>
+                            </div>
+            
+                            <div class="d-flex justify-content-end mt-5 pt-3 border-top">
+                                <button class="btn btn-light rounded-pill px-4 me-2" id="skipToBilling">Skip Billing</button>
+                                <button class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm" data-action="next">Continue <i class="bi bi-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+            
+                        <!-- Step 2 -->
+                        <div class="tab-pane-step" data-step="2">
+                            <h5 class="fw-bold mb-4">Step 2: Billing & Subscriptions</h5>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Name on Card</label>
+                                    <input id="cardName" class="form-control" placeholder="Full name" value="Valerie Luna">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Card Number</label>
+                                    <input id="cardNumber" class="form-control" value="4444 3333 2222 1111">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Expiry Month</label>
+                                    <select id="expMonth" class="form-select">
+                                        <option selected>06</option>
+                                        <option>12</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Expiry Year</label>
+                                    <select id="expYear" class="form-select">
+                                        <option selected>2024</option>
+                                        <option>2026</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">CVV</label>
+                                    <input id="cvv" type="password" class="form-control" value="123">
+                                </div>
+                            </div>
+            
+                            <div class="d-flex justify-content-between mt-5 pt-3 border-top">
+                                <button class="btn btn-light rounded-pill px-4" data-action="prev"><i class="bi bi-arrow-left me-2"></i> Back</button>
+                                <button class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm" data-action="next">Verify & Next <i class="bi bi-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+            
+                        <!-- Step 3 -->
+                        <div class="tab-pane-step" data-step="3">
+                            <h5 class="fw-bold mb-4">Step 3: System Preferences</h5>
+                            <p class="text-muted mb-4">Customize how you interact with the Xivig ecosystem.</p>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="card bg-light border-0 rounded-4 p-4">
+                                        <div class="form-check form-switch mb-3">
+                                            <input class="form-check-input" type="checkbox" id="pref1" checked>
+                                            <label class="form-check-label fw-bold" for="pref1">Real-time Analytics Notifications</label>
                                         </div>
-                                        <div class="p-3 bg-light rounded-4 d-flex align-items-center border border-dashed">
-                                            <input type="color" id="appleColorPicker" value="#0071e3" class="apple-color-trigger border-white border-2 shadow-sm">
-                                            <div class="ms-3">
-                                                <span class="small text-muted d-block">Global Accent</span>
-                                                <input type="text" id="colorValue" class="fw-black border-0 bg-transparent p-0 fs-5" value="#0071E3" readonly>
-                                            </div>
+                                        <div class="form-check form-switch mb-3">
+                                            <input class="form-check-input" type="checkbox" id="pref2" checked>
+                                            <label class="form-check-label fw-bold" for="pref2">Weekly Performance Reports</label>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="pref3">
+                                            <label class="form-check-label fw-bold" for="pref3">Beta Feature Access</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
             
-                            <div class="col-lg-4">
-                                <div class="p-4 rounded-4 border bg-dark text-white h-100">
-                                    <label class="apple-label text-white opacity-50">RGBA Studio</label>
-                                    <div class="mb-4">
-                                        <div class="d-flex align-items-center gap-3 p-3 bg-white bg-opacity-10 rounded-4 mb-3">
-                                            <input type="color" id="rgba-picker" value="#0d6efd" class="apple-color-trigger border-0">
-                                            <div class="flex-grow-1">
-                                                <div class="d-flex justify-content-between mb-1">
-                                                    <span class="small opacity-50">Alpha</span>
-                                                    <span id="opacity-val" class="small fw-bold">100%</span>
-                                                </div>
-                                                <input type="range" id="rgba-opacity" class="form-range" min="0" max="1" step="0.1" value="1">
-                                            </div>
-                                        </div>
-                                        <input type="text" id="rgba-output" class="form-control modern-input border-0 bg-white bg-opacity-10 text-white text-center fw-mono" readonly>
-                                    </div>
-                                </div>
+                            <div class="d-flex justify-content-between mt-5 pt-3 border-top">
+                                <button class="btn btn-light rounded-pill px-4" data-action="prev"><i class="bi bi-arrow-left me-2"></i> Back</button>
+                                <button class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm" data-action="next">Review <i class="bi bi-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+            
+                        <!-- Step 4 -->
+                        <div class="tab-pane-step" data-step="4">
+                            <h5 class="fw-bold mb-4">Step 4: Final Verification</h5>
+                            <p class="text-muted small mb-4">Please review your profile details before submission.</p>
+            
+                            <div class="card border-0 bg-light-subtle p-3 mb-4 rounded-4">
+                                <div class="summary-line"><div>Username</div><div id="s-username"></div></div>
+                                <div class="summary-line"><div>Full Name</div><div id="s-name"></div></div>
+                                <div class="summary-line"><div>Organization</div><div id="s-org"></div></div>
+                                <div class="summary-line"><div>Location</div><div id="s-location"></div></div>
+                                <div class="summary-line"><div>Email</div><div id="s-email"></div></div>
+                                <div class="summary-line"><div>Phone</div><div id="s-phone"></div></div>
+                                <div class="summary-line"><div>Card Reference</div><div id="s-card-num"></div></div>
+                                <div class="summary-line border-0"><div>Primary Contact</div><div id="s-email-alt">Same as Login</div></div>
                             </div>
             
-                            <div class="col-lg-4">
-                                <div class="p-4 rounded-4 border h-100">
-                                    <label class="apple-label">Gradient Architect</label>
-                                    <div class="row g-2 mb-4">
-                                        <div class="col-6">
-                                            <div class="color-preview-wrapper p-2 d-flex align-items-center">
-                                                <input type="color" id="grad-start-picker" value="#f56767" class="apple-color-trigger me-2">
-                                                <input type="text" id="grad-start-input" class="form-control border-0 bg-transparent p-0 small fw-bold" value="#F56767">
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="color-preview-wrapper p-2 d-flex align-items-center">
-                                                <input type="color" id="grad-end-picker" value="#fab27a" class="apple-color-trigger me-2">
-                                                <input type="text" id="grad-end-input" class="form-control border-0 bg-transparent p-0 small fw-bold" value="#FAB27A">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="gradient-result-preview" class="rounded-4 shadow-lg w-100 position-relative d-flex align-items-center justify-content-center"
-                                         style="height: 100px; background: linear-gradient(90deg, #f56767, #fab27a);">
-                                         <span class="text-white fw-black small text-uppercase tracking-widest opacity-75">Live Preview</span>
-                                    </div>
-                                </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-light rounded-pill px-4" data-action="prev"><i class="bi bi-arrow-left me-2"></i> Back</button>
+                                <button class="btn btn-success rounded-pill px-5 fw-bold shadow-lg" id="submitBtn">Finalize Profile</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
             
 
         </div>

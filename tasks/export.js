@@ -19,7 +19,7 @@ export function exportAssets() {
         console.log('✅ Image Found & Copying:', file.relative);
       }
     }))
-    .pipe(copy('exports', {
+    .pipe(copy('docs', {
       prefix: 1
     }));
 }
