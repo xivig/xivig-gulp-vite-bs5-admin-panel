@@ -46,6 +46,7 @@ import { initCalendarApp } from './scripts/calendar.js';
 import { initIconApp } from './scripts/fontawesome-logic.js';
 import { initIconFilter, initIconCopy } from './scripts/bs-icon.js';
 import { initHelpSupport } from './scripts/help-support.js';
+import { initAccountOnboarding } from './scripts/account-onboarding.js';
 import { initAccountSettings } from './scripts/account-settings.js';
 import { initFormAdv } from './scripts/form-adv.js';
 import { initVectorMap } from './scripts/vector-map.js';
@@ -89,6 +90,7 @@ const App = {
             
             // New Modules
             initHelpSupport();
+            initAccountOnboarding();
             initAccountSettings();
             initFormAdv();
             initVectorMap();
