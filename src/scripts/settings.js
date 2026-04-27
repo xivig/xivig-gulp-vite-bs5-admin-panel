@@ -51,9 +51,27 @@ export function initSettings() {
 
     // --- 3. RESET FUNCTIONALITY ---
     const resetBtn = document.getElementById('reset-settings');
-    resetBtn ?.addEventListener('click', () => {
-        localStorage.clear();
-        // Redirect to same page to wipe all states and revert to SCSS defaults
+    resetBtn?.addEventListener('click', () => {
+        localStorage.removeItem('xivig-sidebar-style');
+        localStorage.removeItem('xivig-global-theme');
+        localStorage.removeItem('xivig-menu-icon');
+        
+        // Revert to defaults
+        setSidebarStyle('dark');
+        setGlobalTheme('light');
+        updateMenuIcons('menu-icon-1');
+
+        // Update Radio Buttons
+        const sidebarDark = document.getElementById('sidebar-dark');
+        if (sidebarDark) sidebarDark.checked = true;
+        
+        const headerWhite = document.getElementById('header-white');
+        if (headerWhite) headerWhite.checked = true;
+        
+        const iconDefault = document.getElementById('menu-icon-1');
+        if (iconDefault) iconDefault.checked = true;
+
+        // Force a brief delay then reload or just stay on page with updated state
         window.location.reload();
     });
 

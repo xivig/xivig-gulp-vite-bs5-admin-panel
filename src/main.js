@@ -17,6 +17,7 @@ import Plyr from 'plyr';
 import 'summernote/dist/summernote-lite.js';
 import AirDatepicker from 'air-datepicker';
 import 'timedropper';
+import Cropper from 'cropperjs';
 
 // 4. EXPOSE GLOBALS
 window.Popper = Popper;
@@ -44,6 +45,12 @@ import { initSearchApp } from './scripts/search.js';
 import { initCalendarApp } from './scripts/calendar.js';
 import { initIconApp } from './scripts/fontawesome-logic.js';
 import { initIconFilter, initIconCopy } from './scripts/bs-icon.js';
+import { initHelpSupport } from './scripts/help-support.js';
+import { initAccountSettings } from './scripts/account-settings.js';
+import { initFormAdv } from './scripts/form-adv.js';
+import { initVectorMap } from './scripts/vector-map.js';
+import { initStoreSettings } from './scripts/store-settings.js';
+import { initTaskManager } from './scripts/task-manager.js';
 
 // 7. CHARTS
 import { EChartModule } from './scripts/Echart.js';
@@ -51,27 +58,53 @@ import ChartManager from './scripts/ChartManager.js';
 import HighchartManager from './scripts/HighchartManager.js';
 import ApexchartManager from './scripts/ApexchartManager.js';
 
+// Global reference for legacy scripts
+window.NotificationService = NotificationService;
+
 const App = {
     init() {
-        initXivig();
-        UiController.init();
-        initPreloader();
-        initSidebar();
-        initSettings();
-        initNotificationSelect();
-        initLightbox();
-        initGalleryFilter();
-        initPricingToggle();
-        initKanban();
-        initChatSearch();
-        initMailSelection();
-        initSearchApp();
-        initCalendarApp();
-        initIconApp();
+        console.log("🚀 Elite Architect Engine Starting...");
+        
         try {
+            initXivig();
+            UiController.init();
+            initPreloader();
+            initSidebar();
+            initSettings();
+            
+            // App Modules
+            initNotificationSelect();
+            initLightbox();
+            initGalleryFilter();
+            initPricingToggle();
+            initKanban();
+            initChatSearch();
+            initMailSelection();
+            initSearchApp();
+            initCalendarApp();
+            
+            // Icon Systems
+            initIconApp();
+            initIconFilter('filter_input', 'bsIconContainer');
+            
+            // New Modules
+            initHelpSupport();
+            initAccountSettings();
+            initFormAdv();
+            initVectorMap();
+            initStoreSettings();
+            initTaskManager();
+            
+            if (window.AOS) {
+                AOS.init({ duration: 1000, once: true, offset: 50 });
+            }
+            
             initMediaPlayers();
+            initNotifications();
+            Dashboard.init();
+
         } catch (error) {
-            console.error("Elite Media Engine failed to start:", error);
+            console.error("❌ App Initialization Failed:", error);
         }
     }
 };
@@ -97,14 +130,12 @@ const initNotifications = () => {
     });
 };
 
-window.addEventListener("load", () => {
-    App.init();
-    initNotifications();
-});
-
 const Dashboard = {
     state: { chartjs: {}, echarts: {}, highcharts: {}, apexcharts: {} },
     init() {
+        if (!document.getElementById('accordion-menu')) return;
+        
+        console.log("📊 Dashboard Initializing...");
         try {
             const safeInit = (name, initFn) => {
                 try { return initFn(); } catch (e) { console.warn(`⚠️ ${name} init failed:`, e); return {}; }
@@ -114,29 +145,14 @@ const Dashboard = {
             this.state.highcharts = safeInit('Highcharts', () => HighchartManager.initAll());
             this.state.apexcharts = safeInit('ApexCharts', () => ApexchartManager.initAll());
         } catch (error) {
-            console.error('❌ Critical Dashboard failure:', error);
+            console.error('❌ Dashboard failure:', error);
         }
-    },
-    destroy() {
-        [this.state.chartjs, this.state.highcharts, this.state.apexcharts].forEach(group => {
-            if (group) Object.values(group).forEach(instance => {
-                if (instance && typeof instance.destroy === 'function') instance.destroy();
-            });
-        });
-        if (this.state.echarts) Object.values(this.state.echarts).forEach(instance => {
-            if (instance && typeof instance.dispose === 'function') instance.dispose();
-        });
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('accordion-menu')) {
-        Dashboard.init();
-    }
+window.addEventListener("load", () => {
+    App.init();
 });
 
 window.Dashboard = Dashboard;
-
-document.addEventListener('DOMContentLoaded', () => {
-    ChartManager.initAll();
-});
+window.App = App;

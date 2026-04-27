@@ -10,12 +10,30 @@ export const initIconFilter = async (inputId, containerId) => {
     let allIcons = [];
 
     // 1. Fetch the data (AJAX)
+    console.log("📥 Fetching Bootstrap Icons data...");
     try {
-        const response = await fetch('/data/bootstrap-icons.json');
+        let response = await fetch('data/bootstrap-icons.json');
+        if (!response.ok) {
+            console.warn("⚠️ Relative fetch failed, trying root path...");
+            response = await fetch('/data/bootstrap-icons.json');
+        }
+        
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
         const data = await response.json();
         allIcons = Object.keys(data);
+        console.log(`✅ Loaded ${allIcons.length} icons.`);
+        
+        if (allIcons.length === 0) {
+            container.innerHTML = '<div class="col-12 text-center py-5"><p class="text-danger">No icons found in data file.</p></div>';
+            return;
+        }
     } catch (error) {
-        console.error('Failed to load icons:', error);
+        console.error('❌ Failed to load Bootstrap icons:', error);
+        container.innerHTML = `<div class="col-12 text-center py-5">
+            <p class="text-danger">Failed to load icon library.</p>
+            <small class="text-muted">${error.message}</small>
+        </div>`;
         return;
     }
 

@@ -11,8 +11,16 @@ export const initIconApp = async () => {
     let allIcons = [];
 
     // 1. Fetch the data (AJAX)
+    console.log("📥 Fetching FontAwesome Icons data...");
     try {
-        const response = await fetch('/data/fa-icons.json');
+        let response = await fetch('data/fa-icons.json');
+        if (!response.ok) {
+            console.warn("⚠️ Relative fetch failed, trying root path...");
+            response = await fetch('/data/fa-icons.json');
+        }
+        
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
         const data = await response.json();
         
         // Flatten the data into a list of style+name pairs
@@ -25,8 +33,19 @@ export const initIconApp = async () => {
                 });
             }
         });
+
+        console.log(`✅ Loaded ${allIcons.length} FontAwesome icons.`);
+
+        if (allIcons.length === 0) {
+            container.innerHTML = '<div class="col-12 text-center py-5"><p class="text-danger">No icons found in data file.</p></div>';
+            return;
+        }
     } catch (error) {
-        console.error('Failed to load FontAwesome icons:', error);
+        console.error('❌ Failed to load FontAwesome icons:', error);
+        container.innerHTML = `<div class="col-12 text-center py-5">
+            <p class="text-danger">Failed to load icon library.</p>
+            <small class="text-muted">${error.message}</small>
+        </div>`;
         return;
     }
 
