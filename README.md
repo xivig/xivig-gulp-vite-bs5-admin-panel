@@ -12,7 +12,7 @@ A modern administrative dashboard built with **Bootstrap 5**, **Handlebars** tem
 
 ### Clone and Install
 ```bash
-git clone [https://github.com/xivig/xivig-gulp-vite-bs5-admin-panel.git](https://github.com/xivig/xivig-gulp-vite-bs5-admin-panel.git)
+git clone https://github.com/xivig/xivig-gulp-vite-bs5-admin-panel.git
 cd xivig-gulp-vite-bs5-admin-panel
 npm install
 ```
