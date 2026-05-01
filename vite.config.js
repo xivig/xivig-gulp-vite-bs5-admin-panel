@@ -95,6 +95,7 @@ export default defineConfig({
     alias: {
       // This allows you to use @use "bootstrap" without path headaches
       '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+      'jquery': path.resolve(__dirname, 'src/jquery-shim.js'),
     }
   },
   server: {

@@ -1,4 +1,6 @@
 // 1. TOP-LEVEL VENDOR JS (Must be first for globals)
+import $ from 'jquery';
+window.jQuery = window.$ = $;
 import './scripts/jquery-setup.js';
 
 // 2. VENDOR STYLES (Direct imports for Vite bundling)
